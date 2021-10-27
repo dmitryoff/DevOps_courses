@@ -1,0 +1,13 @@
+2.7
+
+FROM ubuntu:latest
+
+MAINTAINER me
+
+RUN apt-get update && apt-get install -y ruby ruby-dev
+
+CMD ["/bin/bash"]
+
+dmitry@dmitry-B450M-S2H:~$ sudo docker run -it ruby
+root@765feec9cd61:/# ruby -v
+ruby 2.7.0p0 (2019-12-25 revision 647ee6f091) [x86_64-linux-gnu]
