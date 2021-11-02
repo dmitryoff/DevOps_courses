@@ -8,11 +8,11 @@ do
 read N
 if [[ $N -eq 1 ]]
 then
-wget -q -O - "https://myfin.by/currency/minsk" | grep -oP "span class=.?bl_usd_ex.?>\K.*?(?=<)"|awk -F. '{printf "USD: %s.%s\n",$1,substr($2,1,2)}'
+wget -q -O - "https://myfin.by/currency/minsk" | grep -oP "span class=.?bl_usd_ex.?>\K.*?(?=<)"|awk  '{print "USD: "$1}'
 count=$(( $count + 1 ))
 elif [[ $N -eq 2 ]]
 then 
-wget -q -O - "https://myfin.by/currency/minsk" | grep -oP "span class=.?bl_eur_ex.?>\K.*?(?=<)"|awk -F. '{printf "EUR: %s.%s\n",$1,substr($2,1,2)}'
+wget -q -O - "https://myfin.by/currency/minsk" | grep -oP "span class=.?bl_eur_ex.?>\K.*?(?=<)"|awk  '{print "EUR: "$1}'
 count=$(( $count + 1 ))
 else
 echo "Try again"
