@@ -1,2 +1,3 @@
 # Put header here
-Put description here
+Dockerfile - 2.7
+docker-compose - 2.8
