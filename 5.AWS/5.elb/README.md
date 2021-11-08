@@ -8,4 +8,4 @@
 
 В security group инстансов открываем http и https для созданной security группы
 
-Instance status должен быть InService
+Instance status должен быть InService(отключаем 1 инстанс для проверки)
