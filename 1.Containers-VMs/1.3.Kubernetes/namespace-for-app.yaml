@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: Namespace                                            
+metadata:
+  name: for-deploy                                  
+  labels:
+    name: itransition
