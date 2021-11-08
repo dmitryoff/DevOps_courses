@@ -1,2 +1,1 @@
-# Put header here
-Put description here
+Также необходимо в файле /etc/hosts добавить адрес  и название хоста.
