@@ -64,6 +64,18 @@ resource "aws_route_table" "public" {
   }
 }
 
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+  tags = {
+    Name = "private_rt_terraform"
+  }
+}
 
 resource "aws_route_table_association" "public1" {
 
@@ -79,6 +91,13 @@ resource "aws_route_table_association" "public2" {
   route_table_id = aws_route_table.public.id
 }
 
+resource "aws_route_table_association" "private" {
+
+  subnet_id = aws_subnet.private_1.id
+  
+  route_table_id = aws_route_table.private.id
+}
+
 resource "aws_network_acl" "main" {
   vpc_id = aws_vpc.main.id
   
@@ -90,3 +109,4 @@ resource "aws_network_acl" "main" {
     Name = "aclprivate_terraform"
   }
 }
+

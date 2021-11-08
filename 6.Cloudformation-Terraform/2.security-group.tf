@@ -36,7 +36,7 @@ resource "aws_security_group_rule" "public_out" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+  source_security_group_id = "${aws_security_group.elb_sg.id}"
  
   security_group_id = aws_security_group.allow_tls.id
 }
@@ -46,7 +46,19 @@ resource "aws_security_group_rule" "public_out" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
- 
+  source_security_group_id = "${aws_security_group.elb_sg.id}"
+  
+
+  security_group_id = aws_security_group.allow_tls.id
+}
+
+resource "aws_security_group_rule" "private_in_db" {
+  type              = "ingress"
+  from_port         = 5432
+  to_port           = 5432
+  protocol          = "tcp"
+  source_security_group_id = "${aws_security_group.db_sg.id}"
+  
+
   security_group_id = aws_security_group.allow_tls.id
 }
