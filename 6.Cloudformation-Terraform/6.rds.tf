@@ -19,6 +19,8 @@ resource "aws_db_instance" "database-instance" {
   username = "dima"
   password = "12345abcde"
   vpc_security_group_ids  = [aws_security_group.db_sg.id]
+  skip_final_snapshot  = true
+  backup_retention_period = 0
 }
 
 resource "aws_security_group" "db_sg" {
