@@ -62,3 +62,25 @@ resource "aws_security_group_rule" "private_in_db" {
 
   security_group_id = aws_security_group.allow_tls.id
 }
+
+resource "aws_security_group_rule" "private_in_ec_m" {
+  type              = "ingress"
+  from_port         = 11211
+  to_port           = 11211
+  protocol          = "tcp"
+  source_security_group_id = "${aws_security_group.ec_sg.id}"
+  
+
+  security_group_id = aws_security_group.allow_tls.id
+}
+
+resource "aws_security_group_rule" "private_in_ec_r" {
+  type              = "ingress"
+  from_port         = 6379
+  to_port           = 6379
+  protocol          = "tcp"
+  source_security_group_id = "${aws_security_group.ec_sg.id}"
+  
+
+  security_group_id = aws_security_group.allow_tls.id
+}
