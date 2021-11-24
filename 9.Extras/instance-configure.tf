@@ -106,27 +106,6 @@ resource "aws_security_group_rule" "public_out1" {
   security_group_id = aws_security_group.instance_sg.id
 }
 
- resource "aws_security_group_rule" "all" {
-  type              = "ingress"
-  to_port           = 0
-  protocol          = "-1"
-  from_port         = 0
-  cidr_blocks = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.instance_sg.id
-}
-
-
-  resource "aws_security_group_rule" "second_host" {
-  type              = "ingress"
-  from_port         = 8000
-  to_port           = 8000
-  protocol          = "tcp"
-  source_security_group_id = "${aws_security_group.alb_sg.id}"
-  
-
-  security_group_id = aws_security_group.instance_sg.id
-}
-
  resource "aws_security_group_rule" "http_host" {
   type              = "ingress"
   from_port         = 80
@@ -143,6 +122,16 @@ resource "aws_security_group_rule" "public_out1" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
+ 
+  security_group_id = aws_security_group.instance_sg.id
+}
+
+ resource "aws_security_group_rule" "gatsby" {
+  type              = "ingress"
+  from_port         = 8000
+  to_port           = 8000
+  protocol          = "tcp"
+  source_security_group_id = "${aws_security_group.alb_sg.id}"
  
   security_group_id = aws_security_group.instance_sg.id
 }

@@ -47,16 +47,21 @@ resource "aws_lb_listener" "alb" {
   }
 }
 
-resource "aws_lb_listener" "alb2" {
-  load_balancer_arn = aws_lb.alb.arn
-  port              = "8000"
-  protocol          = "HTTP"
+resource "aws_lb_listener_rule" "gatsby" {
+  listener_arn = aws_lb_listener.alb.arn
 
-  default_action {
+  action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.test2.arn
   }
+
+  condition {
+    host_header {
+      values = ["gatsby.dmitryoff.ru"]
+    }
+  }
 }
+
 
 resource "aws_security_group" "alb_sg" {
   name        = "alb-sg-terraform"
@@ -77,21 +82,20 @@ resource "aws_security_group_rule" "public_out_elb" {
   security_group_id = aws_security_group.alb_sg.id
 }
 
-
-  resource "aws_security_group_rule" "alb_second" {
+resource "aws_security_group_rule" "http" {
   type              = "ingress"
-  from_port         = 8000
-  to_port           = 8000
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
  
   security_group_id = aws_security_group.alb_sg.id
 }
 
-resource "aws_security_group_rule" "http" {
+resource "aws_security_group_rule" "gat" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = 8000
+  to_port           = 8000
   protocol          = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
  
