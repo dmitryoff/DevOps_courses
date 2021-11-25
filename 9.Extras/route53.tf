@@ -25,8 +25,8 @@ resource "aws_route53_record" "main" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.alb.dns_name
-    zone_id                = aws_lb.alb.zone_id
+    name                   = aws_cloudfront_distribution.my_web_site.domain_name
+    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = true
   }
 }
@@ -37,8 +37,8 @@ resource "aws_route53_record" "gatsby" {
   type    = "A"
   
   alias {
-    name                   = aws_lb.alb.dns_name
-    zone_id                = aws_lb.alb.zone_id
+    name                   = aws_cloudfront_distribution.my_web_site.domain_name
+    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = true
   }
 }
