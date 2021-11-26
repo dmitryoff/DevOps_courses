@@ -84,7 +84,7 @@ resource "aws_instance" "instance_terraform" {
 }
 
 resource "aws_key_pair" "keyterraform1" {
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDxp+pGRiGtO0BKjeh6NWdhXeEELp7au8KIq6peyEESYxhxmbV///WQEE44il8+vHTyMOUDmjjCxOvIPHm7jnG04MX+tf6x83t8qGV2IJeM4aRzcti5PYpgdlpofH5L8OSoA0bPTUPx3QSTWqsFhwH0dz81MNeDqdLNCwH9Ak2MIBJYI2nLlHXiJOAgqE+HF+RtlZvCLUT+4fMEMLOuJ2K4PVqGtPT2/OEGiQAcOZ4Z46Ks/qwcd7X8AyC9ObUoHsyyak0W3556ZieNL1SAV3SO13Z2kiefwM5KifGbqUS5kSddzYifb7cL+bhJ1d2suewnbifSoCfs/rm98trbCK5sDkWXy6/n9SUBc2kNfoi60GGIlOelyGKLMDECUsM9ZTUIB2rQ9Uhs2b4BbqGQ3mMN507jB6xzDkXR45/LwYyScFhJUsXgIYs7MsAbQ/xaHegKS0hV8S0EXs38ZTGQZl/GGbPX1YzERsD2yPoUSSZok+yuJbmmZngYTH77/6VnURs= dmitry@dmitry-B450M-S2H"
+  public_key = "ssh-rsa "
 }
 
 resource "aws_security_group" "instance_sg" {
