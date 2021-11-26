@@ -1,2 +1,1 @@
-# Put header here
-Put description here
+файлы asg1 и asg.main запускать отдельно
