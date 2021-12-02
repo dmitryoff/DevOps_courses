@@ -73,7 +73,7 @@ resource "aws_security_group" "alb_sg" {
   }
 }
 
-resource "aws_security_group_rule" "public_out_elb" {
+resource "aws_security_group_rule" "public_out_elb1" {
   type              = "egress"
   to_port           = 0
   protocol          = "-1"
