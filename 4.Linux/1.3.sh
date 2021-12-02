@@ -7,5 +7,5 @@ if [[ $string != "" ]]
 then
 echo $string
 else
-echo -e "\nTime is ove"
+echo -e "\nTime is over"
 fi
