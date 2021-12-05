@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Input 1 syblol"
+echo "Input 1 symbol"
 
 count=0
 while (true); do
