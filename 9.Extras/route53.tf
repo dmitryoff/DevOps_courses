@@ -8,7 +8,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_route53_zone" "primary" {
+data "aws_route53_zone" "primary" {
   name = "dmitryoff.ru"
 }
 
@@ -20,7 +20,7 @@ resource "aws_acm_certificate" "example" {
 }
 
 resource "aws_route53_record" "main" {
-  zone_id = aws_route53_zone.primary.zone_id
+  zone_id = data.aws_route53_zone.primary.zone_id
   name    = "dmitryoff.ru"
   type    = "A"
 
@@ -32,7 +32,7 @@ resource "aws_route53_record" "main" {
 }
 
 resource "aws_route53_record" "gatsby" {
-  zone_id = aws_route53_zone.primary.zone_id
+  zone_id = data.aws_route53_zone.primary.zone_id
   name    = "gatsby.dmitryoff.ru"
   type    = "A"
   
@@ -57,7 +57,7 @@ resource "aws_route53_record" "example" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.primary.zone_id
+  zone_id         = data.aws_route53_zone.primary.zone_id
 }
 
 resource "aws_acm_certificate_validation" "example" {
