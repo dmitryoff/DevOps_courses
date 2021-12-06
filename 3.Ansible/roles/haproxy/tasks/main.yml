@@ -1,0 +1,6 @@
+---
+# tasks file for haproxy
+- name: install haproxy
+  apt:
+    pkg: haproxy
+    state: present

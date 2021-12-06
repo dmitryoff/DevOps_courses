@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+  - name: install nginx
+    apt:
+      pkg: nginx
+
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: /home/dmitry/ansible/roles/nginx/files/default
+      dest: /etc/nginx/sites-enabled/default
+  
+  - name: restart nginx
+    service: name=nginx state=restarted enabled=yes

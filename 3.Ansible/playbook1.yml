@@ -1,0 +1,31 @@
+---
+- name: haproxy
+  hosts: haproxy	 
+  become: yes
+
+  roles:
+    - apt
+    - ntp	
+    - haproxy
+
+- name: logstah
+  hosts: logstash
+  become: yes
+
+  roles:
+    - apt
+    - ntp
+    - java
+    - logstash
+    - elasticsearch
+
+- name: webui
+  hosts: webui
+  become: yes
+
+  roles:
+    - apt
+    - ntp
+    - rsyslog
+    - kibana
+    - nginx

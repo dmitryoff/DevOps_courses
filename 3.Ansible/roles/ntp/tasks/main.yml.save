@@ -1,0 +1,21 @@
+---
+# tasks file for update_time
+- name: Set timezone to Asia/Tokyo
+  community.general.timezone:
+    name: Europe/Minsk
+
+- name: Install the NTP daemon to synchronize the clocks to ms.
+  apt: name=ntp
+
+- name: Make sure ntp is started, and is enabled on restart.
+  service: name=ntp state=started enabled=yes
+
+ name: Creates weekly backup cronjob
+  cron: minute="20" hour="5" weekday="sun"
+        name="Backup mysql tables (weekly schedule)"
+        cron_file="mysqlbackup-WeeklyBackups"
+        user="root"
+        job="/usr/local/bin/mysqlbackup.WeeklyBackups.sh"
+  tags:
+    - mysql
+    - cronjobs    

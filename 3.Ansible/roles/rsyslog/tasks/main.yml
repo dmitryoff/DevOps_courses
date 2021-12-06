@@ -1,0 +1,16 @@
+---
+# tasks file for rsyslog
+  - name: get repositry
+    ansible.builtin.apt_repository:
+      repo: ppa:adiscon/v8-stable
+
+  - name: Update apt packages
+    become: true
+    apt:
+      update_cache: yes
+
+  - name: install rsyslog
+    become: true
+    apt:
+      pkg: rsyslog
+

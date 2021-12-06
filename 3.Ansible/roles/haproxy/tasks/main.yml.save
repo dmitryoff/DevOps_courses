@@ -1,0 +1,7 @@
+---
+# tasks file for haproxy
+tasks:
+  - name: Monit | Make sure monit is installed
+    apt:
+      pkg: haproxy
+      state: present

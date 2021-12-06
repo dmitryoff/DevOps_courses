@@ -1,0 +1,9 @@
+---
+# tasks file for kibana
+  - name: Download zip kibana
+    get_url:
+      url: https://download.elastic.co/kibana/kibana/kibana-3.1.1.tar.gz
+      dest: /home/ubuntu
+
+  - name: unzip
+    ansible.builtin.shell: tar -xzf kibana-3.1.1.tar.gz
