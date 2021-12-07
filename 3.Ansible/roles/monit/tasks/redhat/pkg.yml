@@ -1,5 +1,0 @@
----
-- name: pkg - Install package
-  yum:
-    name: monit
-    state: present
