@@ -6,8 +6,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 nvm install node
 npm install -g gatsby-cli
 gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
-cd my-hello-world-starter/
-npm install
 
 sudo yum update
 sudo yum install -y amazon-linux-extras
