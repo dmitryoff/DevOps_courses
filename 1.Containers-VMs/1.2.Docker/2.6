@@ -1,4 +1,4 @@
-docker run --name mysql -p 33061:3306 -v /home/dmitry/docker/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123abc -d mysql
+docker run --name mysql -p 33061:3306 -v /home/dmitry/docker/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=****** -d mysql
 
 dmitry@dmitry-B450M-S2H:~/docker$ sudo mysql -h 127.0.0.1 -P 33061 -u root -p
 Enter password: 
@@ -14,13 +14,13 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> CREATE USER 'dmitry'@'localhost' IDENTIFIED BY '3441470abcd';
+mysql> CREATE USER 'dmitry'@'localhost' IDENTIFIED BY '***********';
 Query OK, 0 rows affected (0,02 sec)
 
 mysql> CREATE DATABASE mydatabase;
 Query OK, 1 row affected (0,01 sec)
 
-mysql> GRANT SELECT ON *.* TO 'dmitry'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'dmitry'@'localhost';
 Query OK, 0 rows affected, 1 warning (0,02 sec)
 
 
@@ -29,7 +29,7 @@ Query OK, 0 rows affected (0,01 sec)
 
 mysql> exit
 
-dmitry@dmitry-B450M-S2H:~/docker$ sudo mysql -h localhost -P 33061 mydatabase -udmitry -p3441470abcd
+dmitry@dmitry-B450M-S2H:~/docker$ mysql -h localhost -P 33061 -udmitry -p3441470abcd
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 14
